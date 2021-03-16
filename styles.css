@@ -1,3 +1,25 @@
 body {
-    background: blue;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    background: crimson;
+}
+
+.game-board-grid {
+    width: 300px;
+    margin: 20px auto;
+    height: 300px;
+    display: grid;
+    grid-gap: 4px;
+    grid-template-rows: 100px 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+}
+
+.game-board-space {
+    display: grid;
+    /*grid-template-columns: repeat(10, 1fr);*/
+    grid-gap: 0.25rem;
+    background: white;
 }
