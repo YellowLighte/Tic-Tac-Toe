@@ -19,7 +19,6 @@ body {
 
 .game-board-space {
     display: grid;
-    /*grid-template-columns: repeat(10, 1fr);*/
     grid-gap: 0.25rem;
     background: white;
 }
