@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b3766d2d-a9d6-42c1-a605-b86b063bcb65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1pr6nypxScw28VopD8z9xVI4zo3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,7 +35,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615929034402</updated>
-      <workItem from="1615929037024" duration="5421000" />
+      <workItem from="1615929037024" duration="6687000" />
+      <workItem from="1615990818036" duration="259000" />
+      <workItem from="1615991091693" duration="1821000" />
     </task>
     <servers />
   </component>
