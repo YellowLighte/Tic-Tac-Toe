@@ -2,51 +2,47 @@ const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
 
-
-
-// create player1 and player2
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
-let moveMemory = ['', '', '', '', '', '', '', '', '', ''];
+
+//let moveMemory = new Array(9);
+//TODO ask about this in stand up - win condition will fire with null values
+let moveMemory =[1,2,3,4,5,6,7,8,9];
 
 let currentPlayer = player1_text;
 
 clearBtn.addEventListener('click', clearBoard);
 
 function createBoard() {
-    console.log('called from createBoard - current player is: ', currentPlayer);
+    currentPlayer = player1_text;
     moveCounter = 0;
+
     gameBoard.childNodes.forEach(child => {
         child.addEventListener('click', () => {
             child.innerText = currentPlayer;
             moveMemory[child.id] = currentPlayer;
-
-            //check to see if the currentPlayer has won
-
             checkForWin();
             changePlayer();
-            moveCounter++;
-            console.log('called from createBoard() - move: ', moveCounter);
+            console.log(moveMemory);
         }, {once: true})
     });
+
 }
 
 function clearBoard() {
-    squares.forEach(square => {
-        square.innerText = '';
-    });
-    currentPlayer = player1_text;
-
-    console.log('called from clearBoard - moves :', moveCounter);
-    console.log('called from clearBoard - current player is: ', currentPlayer);
-    console.log(moveMemory);
-
-    // Test to clear memory
-    moveMemory = [];
-    console.log(moveMemory);
-    // End test
-    createBoard();
+    // squares.forEach(square => {
+    //     square.innerText = '';
+    // });
+    //
+    // //TODO Ask about this in stand up
+    // moveMemory = [1,2,3,4,5,6,7,8,9];
+    // currentPlayer = player1_text;
+    // moveCounter = 0;
+    // console.log('END CLEARBOARD');
+    // console.log(' ');
+    // createBoard();
+    window.location.reload(true);
 }
 
 function changePlayer() {
@@ -55,14 +51,45 @@ function changePlayer() {
     } else {
         currentPlayer = player2_text;
     }
-    console.log('called from changePlayer() - current player is: ', currentPlayer);
+    moveCounter++;
 }
 
 function checkForWin() {
-    if (moveCounter === 8) {
+    if (moveMemory[0] === moveMemory[1] && moveMemory[0] === moveMemory[2]) {
+        console.log('won on top row');
+        return true;
+    }
+    else if (moveMemory[3] === moveMemory[4] && moveMemory[3] === moveMemory[5]) {
+        console.log('won on middle row');
+        return true;
+    }
+    else if (moveMemory[6] === moveMemory[7] && moveMemory[6] === moveMemory[8]) {
+        console.log('won on bottom row');
+        return true;
+    }
+    else if (moveMemory[0] === moveMemory[3] && moveMemory[0] === moveMemory[6]) {
+        console.log('won on first column');
+        return true;
+    }
+    else if (moveMemory[1] === moveMemory[4] && moveMemory[1] === moveMemory[7]) {
+        console.log('won on second column');
+        return true;
+    }
+    else if (moveMemory[2] === moveMemory[5] && moveMemory[2] === moveMemory[8]) {
+        console.log('won on third column');
+        return true;
+    }
+    else if (moveMemory[0] === moveMemory[4] && moveMemory[0] === moveMemory[8]) {
+        console.log('won diagonally right');
+        return true;
+    }
+    else if (moveMemory[2] === moveMemory[4] && moveMemory[2] === moveMemory[6]) {
+        console.log('won diagonally left');
+        return true;
+    }
+     if (moveCounter === 8) {
         alert('GAME OVER. Tie.');
     }
-
 }
 
 createBoard();
