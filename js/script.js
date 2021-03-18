@@ -8,7 +8,7 @@ let moveCounter = 0;
 
 //let moveMemory = new Array(9);
 //TODO ask about this in stand up - win condition will fire with null values
-let moveMemory =[1,2,3,4,5,6,7,8,9];
+let moveMemory = [1,2,3,4,5,6,7,8,9];
 
 let currentPlayer = player1_text;
 
@@ -19,38 +19,49 @@ function createBoard() {
     moveCounter = 0;
 
     gameBoard.childNodes.forEach(child => {
-        child.addEventListener('click', () => {
-            child.innerText = currentPlayer;
-            moveMemory[child.id] = currentPlayer;
-            checkForWin();
-            changePlayer();
-            console.log(moveMemory);
-        }, {once: true})
+        child.addEventListener('click', squareEventHandling, {once: true})
     });
+}
 
+function squareEventHandling(event) {
+    console.log(event);
+    event.target.innerText = currentPlayer;
+    moveMemory[event.target.id] = currentPlayer;
+    if (moveCounter >= 5) {
+        checkForWin();
+    }
+    changePlayer();
+    console.log(moveMemory);
+    console.log(moveCounter);
 }
 
 function clearBoard() {
-    // squares.forEach(square => {
-    //     square.innerText = '';
-    // });
-    //
-    // //TODO Ask about this in stand up
-    // moveMemory = [1,2,3,4,5,6,7,8,9];
-    // currentPlayer = player1_text;
-    // moveCounter = 0;
-    // console.log('END CLEARBOARD');
-    // console.log(' ');
-    // createBoard();
-    window.location.reload(true);
+    squares.forEach(square => {
+        square.innerText = '';
+    });
+
+    //TODO Ask about this in stand up
+    moveMemory = [1,2,3,4,5,6,7,8,9];
+    currentPlayer = player1_text;
+    moveCounter = 0;
+    console.log('END CLEARBOARD');
+    console.log(' ');
+    //Destroy event listeners on squares
+    squares.forEach(square => {
+        square.removeEventListener('click', squareEventHandling);
+    });
+    createBoard();
+    //window.location.reload(true);
 }
 
 function changePlayer() {
-    if (moveCounter % 2 === 1){
-        currentPlayer = player1_text;
-    } else {
-        currentPlayer = player2_text;
-    }
+    // if (moveCounter % 2 === 1){
+    //     currentPlayer = player1_text;
+    // } else {
+    //     currentPlayer = player2_text;
+    // }
+    // moveCounter++;
+    currentPlayer = currentPlayer === player1_text? player2_text : player1_text;
     moveCounter++;
 }
 
