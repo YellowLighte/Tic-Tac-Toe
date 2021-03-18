@@ -1,6 +1,7 @@
 const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
+const headText = document.querySelector('#head-text');
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
@@ -27,6 +28,9 @@ function squareEventHandling(event) {
     moveMemory[event.target.id] = currentPlayer;
     if (moveCounter >= 4) {
         checkForWin();
+        if (checkForWin()) {
+            headText.innerText = `${currentPlayer} won the game`;
+        }
     }
     changePlayer();
 }
@@ -45,7 +49,7 @@ function clearBoard() {
 }
 
 function changePlayer() {
-    currentPlayer = currentPlayer === player1_text? player2_text : player1_text;
+    currentPlayer = currentPlayer === player1_text ? player2_text : player1_text;
     moveCounter++;
 }
 
@@ -82,7 +86,7 @@ function checkForWin() {
         console.log('won diagonally left');
         return true;
     }
-     if (moveCounter === 8) {
+     else if (moveCounter === 8) {
         alert('GAME OVER. Tie.');
     }
 }
