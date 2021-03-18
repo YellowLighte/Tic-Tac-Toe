@@ -41,6 +41,10 @@ function squareEventHandling(event) {
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
             playerTurnText.style.display = 'none';
+        } else if (moveCounter === 8) {
+            clearBtn.innerHTML = 'Play again?';
+            playerTurnText.style.display = 'none';
+            alert('GAME OVER. Tie.');
         }
     }
     changePlayer();
@@ -55,7 +59,6 @@ function clearBoard() {
     moveMemory = [1,2,3,4,5,6,7,8,9];
     currentPlayer = player1_text;
     moveCounter = 0;
-    //removeSquareEventHandlers();
     headText.innerText = 'Tic Tac Toe';
     createBoard();
 }
@@ -107,9 +110,6 @@ function checkForWin() {
     else if (moveMemory[2] === moveMemory[4] && moveMemory[2] === moveMemory[6]) {
         console.log('won diagonally left');
         return true;
-    }
-     else if (moveCounter === 8) {
-        alert('GAME OVER. Tie.');
     }
 }
 
