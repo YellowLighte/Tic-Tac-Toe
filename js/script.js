@@ -2,6 +2,7 @@ const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
 const headText = document.querySelector('#head-text');
+const gameContainer = document.querySelector('.game-container');
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
@@ -29,7 +30,8 @@ function squareEventHandling(event) {
     if (moveCounter >= 4) {
         checkForWin();
         if (checkForWin()) {
-            headText.innerText = `${currentPlayer} won the game`;
+            //headText.innerText = `${currentPlayer} won the game`;
+            window.confirm(`${currentPlayer} won the game`);
         }
     }
     changePlayer();
@@ -45,6 +47,7 @@ function clearBoard() {
     squares.forEach(square => {
         square.removeEventListener('click', squareEventHandling);
     });
+    headText.innerText = 'Tic Tac Toe';
     createBoard();
 }
 
