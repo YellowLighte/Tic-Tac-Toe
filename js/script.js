@@ -2,7 +2,8 @@ const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
 const headText = document.querySelector('#head-text');
-const gameContainer = document.querySelector('.game-container');
+//const gameContainer = document.querySelector('.game-container');
+const playerTurnText = document.querySelector('#player-turn-text');
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
@@ -13,6 +14,9 @@ clearBtn.addEventListener('click', clearBoard);
 
 function createBoard() {
     currentPlayer = player1_text;
+    clearBtn.innerHTML = 'Clear Board';
+    playerTurnText.innerHTML = `${currentPlayer} starts`;
+    playerTurnText.style.display = 'block';
     moveCounter = 0;
     gameBoard.childNodes.forEach(child => {
         child.addEventListener('click', squareEventHandling, {once: true})
@@ -20,6 +24,7 @@ function createBoard() {
 }
 
 function squareEventHandling(event) {
+
     if (currentPlayer === player1_text) {
         event.target.style.color = 'blue';
     } else {
@@ -30,8 +35,10 @@ function squareEventHandling(event) {
     if (moveCounter >= 4) {
         checkForWin();
         if (checkForWin()) {
-            //headText.innerText = `${currentPlayer} won the game`;
+            removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
+            clearBtn.innerHTML = 'Play again?';
+            playerTurnText.style.display = 'none';
         }
     }
     changePlayer();
@@ -44,16 +51,21 @@ function clearBoard() {
     moveMemory = [1,2,3,4,5,6,7,8,9];
     currentPlayer = player1_text;
     moveCounter = 0;
-    squares.forEach(square => {
-        square.removeEventListener('click', squareEventHandling);
-    });
+    removeSquareEventHandlers();
     headText.innerText = 'Tic Tac Toe';
     createBoard();
+}
+
+function removeSquareEventHandlers() {
+    squares.forEach(square => {
+        square.removeEventListener('click', squareEventHandling);
+    })
 }
 
 function changePlayer() {
     currentPlayer = currentPlayer === player1_text ? player2_text : player1_text;
     moveCounter++;
+    playerTurnText.innerHTML = `It's ${currentPlayer}'s turn`;
 }
 
 function checkForWin() {
