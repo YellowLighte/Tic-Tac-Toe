@@ -18,9 +18,14 @@ function createBoard() {
 }
 
 function squareEventHandling(event) {
+    if (currentPlayer === player1_text) {
+        event.target.style.color = 'blue';
+    } else {
+        event.target.style.color = 'green';
+    }
     event.target.innerText = currentPlayer;
     moveMemory[event.target.id] = currentPlayer;
-    if (moveCounter >= 5) {
+    if (moveCounter >= 4) {
         checkForWin();
     }
     changePlayer();
