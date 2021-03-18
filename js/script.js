@@ -2,8 +2,9 @@ const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
 const headText = document.querySelector('#head-text');
-//const gameContainer = document.querySelector('.game-container');
 const playerTurnText = document.querySelector('#player-turn-text');
+
+// These can be changed depending on which tokens the player wants to use v
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
@@ -12,6 +13,7 @@ let currentPlayer = player1_text;
 
 clearBtn.addEventListener('click', clearBoard);
 
+// Function initializes game board and adds event listeners to each box in the grid
 function createBoard() {
     currentPlayer = player1_text;
     clearBtn.innerHTML = 'Clear Board';
@@ -23,6 +25,7 @@ function createBoard() {
     });
 }
 
+// Function contains logic for square event clicks
 function squareEventHandling(event) {
 
     if (currentPlayer === player1_text) {
@@ -33,7 +36,6 @@ function squareEventHandling(event) {
     event.target.innerText = currentPlayer;
     moveMemory[event.target.id] = currentPlayer;
     if (moveCounter >= 4) {
-        checkForWin();
         if (checkForWin()) {
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
@@ -44,30 +46,35 @@ function squareEventHandling(event) {
     changePlayer();
 }
 
+// Clears board once game is over and recalls function that will reset the game
 function clearBoard() {
+    removeSquareEventHandlers();
     squares.forEach(square => {
         square.innerText = '';
     });
     moveMemory = [1,2,3,4,5,6,7,8,9];
     currentPlayer = player1_text;
     moveCounter = 0;
-    removeSquareEventHandlers();
+    //removeSquareEventHandlers();
     headText.innerText = 'Tic Tac Toe';
     createBoard();
 }
 
+// Removes event listeners from each square so they can't be clicked once win condition is met
 function removeSquareEventHandlers() {
     squares.forEach(square => {
         square.removeEventListener('click', squareEventHandling);
     })
 }
 
+// Logic to determine whose turn it is
 function changePlayer() {
     currentPlayer = currentPlayer === player1_text ? player2_text : player1_text;
     moveCounter++;
     playerTurnText.innerHTML = `It's ${currentPlayer}'s turn`;
 }
 
+// Cycles through win conditions and returns true if one of the conditions has been met
 function checkForWin() {
     if (moveMemory[0] === moveMemory[1] && moveMemory[0] === moveMemory[2]) {
         console.log('won on top row');
@@ -106,4 +113,5 @@ function checkForWin() {
     }
 }
 
+// Starts game
 createBoard();
