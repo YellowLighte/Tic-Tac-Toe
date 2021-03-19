@@ -1,6 +1,6 @@
 const gameBoard = document.querySelector('.game-board-grid');
 const clearBtn = document.querySelector('#clear-btn');
-const squares = document.querySelector('.game-board-grid').querySelectorAll('.game-board-space');
+const squares = document.querySelectorAll('.game-board-grid > div');
 const headText = document.querySelector('#head-text');
 const playerTurnText = document.querySelector('#player-turn-text');
 
@@ -37,6 +37,9 @@ function squareEventHandling(event) {
     moveMemory[event.target.id] = currentPlayer;
     if (moveCounter >= 4) {
         if (checkForWin()) {
+            gameBoard.style.animation = 'hinge 2s ease-in-out';
+            //gameBoard.style.animation = hinge 2s ease-in-out;
+            //animation: hinge 2s ease-in-out;
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
@@ -80,7 +83,11 @@ function changePlayer() {
 // Cycles through win conditions and returns true if one of the conditions has been met
 function checkForWin() {
     if (moveMemory[0] === moveMemory[1] && moveMemory[0] === moveMemory[2]) {
+        //squares[0].classList.add('animate__rotateOut');
+        // squares[0].className = 'animate__rotateOut';
+        // squares[0].style.setProperty('--animate-duration', '10s');
         console.log('won on top row');
+        console.log(squares[0]);
         return true;
     }
     else if (moveMemory[3] === moveMemory[4] && moveMemory[3] === moveMemory[5]) {
@@ -110,8 +117,15 @@ function checkForWin() {
     else if (moveMemory[2] === moveMemory[4] && moveMemory[2] === moveMemory[6]) {
         console.log('won diagonally left');
         return true;
+    } else {
+        console.log('No winner yet');
     }
 }
+
+// Testing element animations
+// function winningAnimation(event) {
+//     event.target.classList.add('animate__rotateOut');
+// }
 
 // Starts game
 createBoard();
