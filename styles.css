@@ -6,11 +6,13 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: sans-serif;
-    background: dimgray;
+    background-color: #696969;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 #player1, #player2 {
-    background: crimson;
+    background-color: #dc143c;
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
 }
 
 .game-container {

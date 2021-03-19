@@ -51,7 +51,7 @@ function squareEventHandling(event) {
                 player2WinCount++;
                 player2WinText.innerText = player2WinCount;
             }
-            
+
             // Adds animation to gameBoard div and keeps last keyframe until board is reset.
             gameBoard.style.animation = 'rotateOut 2s';
             gameBoard.style.animationFillMode = 'forwards';
