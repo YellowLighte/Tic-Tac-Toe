@@ -11,17 +11,19 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class = game-container id="player1">
-        <h2>Player 1 Total Wins:</h2>
+        <h2 id="p1DivText"></h2>
         <div class="player-win-count">0</div>
     </div>
     <div class="game-container">
         <h1 id="head-text">Tic Tac Toe</h1>
         <h2 id="player-turn-text"></h2>
-        <button id="clear-btn">Clear Board</button>
+        <button id="clear-btn">Play again?</button>
         <div class="game-board-grid">
             <div class="game-board-space" id="0"></div>
             <div class="game-board-space" id="1"></div>
@@ -35,7 +37,7 @@
         </div>
     </div>
     <div class="game-container" id="player2">
-        <h2>Player 2 Total Wins:</h2>
+        <h2 id="p2DivText"></h2>
         <div class="player-win-count">0</div>
     </div>
 <script src="js/script.js">></script>

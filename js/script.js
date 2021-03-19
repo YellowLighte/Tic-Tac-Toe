@@ -5,25 +5,27 @@ const headText = document.querySelector('#head-text');
 const playerTurnText = document.querySelector('#player-turn-text');
 const player1WinText = document.querySelector('#player1 .player-win-count');
 const player2WinText = document.querySelector('#player2 .player-win-count');
+const player1Header = document.querySelector('#p1DivText');
+const player2Header = document.querySelector('#p2DivText');
 
 
-// These can be changed depending on which tokens the player wants to use v
+// These can be changed depending on which tokens the player wants to use
 const player1_text = 'X';
 const player2_text = 'O';
 let moveCounter = 0;
 let moveMemory = [1,2,3,4,5,6,7,8,9];
 let currentPlayer = player1_text;
-//Test to add win counter
 let player1WinCount = 0;
 let player2WinCount = 0;
-//End test
 
 clearBtn.addEventListener('click', clearBoard);
 
 // Function initializes game board and adds event listeners to each box in the grid
 function createBoard() {
+    player1Header.innerText = `${player1_text} Total Wins:`;
+    player2Header.innerText = `${player2_text} Total Wins:`;
     currentPlayer = player1_text;
-    clearBtn.innerHTML = 'Clear Board';
+    clearBtn.style.visibility = 'hidden';
     playerTurnText.innerHTML = `${currentPlayer} starts`;
     playerTurnText.style.display = 'block';
     moveCounter = 0;
@@ -58,11 +60,13 @@ function squareEventHandling(event) {
 
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
-            clearBtn.innerHTML = 'Play again?';
+            //clearBtn.innerHTML = 'Play again?';
+            clearBtn.style.visibility = 'visible';
             playerTurnText.style.display = 'none';
 
         } else if (moveCounter === 8) {
-            clearBtn.innerHTML = 'Play again?';
+            //clearBtn.innerHTML = 'Play again?';
+            clearBtn.style.visibility= 'visible';
             playerTurnText.style.display = 'none';
             alert('GAME OVER. Tie.');
         }
