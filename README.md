@@ -6,7 +6,8 @@ While the game seems simple on the surface level, there's a lot of logic behind 
 While frustrating at times, I am proud to introduce you to my very first game. Please feel free to tear it apart... constructive criticism is welcome.
 
 ## Wanna Play?
-(Link to Github Pages to go here)
+[Direct link to Tic Tac Toe live game](https://yellowlighte.github.io/Tic-Tac-Toe/index.html)
+
 Clicking on the link above will take you directly to the live version of the game.
 
 
