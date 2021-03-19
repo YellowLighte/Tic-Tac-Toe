@@ -3,6 +3,9 @@ const clearBtn = document.querySelector('#clear-btn');
 const squares = document.querySelectorAll('.game-board-grid > div');
 const headText = document.querySelector('#head-text');
 const playerTurnText = document.querySelector('#player-turn-text');
+const player1WinText = document.querySelector('#player1 .player-win-count');
+const player2WinText = document.querySelector('#player2 .player-win-count');
+
 
 // These can be changed depending on which tokens the player wants to use v
 const player1_text = 'X';
@@ -10,6 +13,10 @@ const player2_text = 'O';
 let moveCounter = 0;
 let moveMemory = [1,2,3,4,5,6,7,8,9];
 let currentPlayer = player1_text;
+//Test to add win counter
+let player1WinCount = 0;
+let player2WinCount = 0;
+//End test
 
 clearBtn.addEventListener('click', clearBoard);
 
@@ -37,7 +44,14 @@ function squareEventHandling(event) {
     moveMemory[event.target.id] = currentPlayer;
     if (moveCounter >= 4) {
         if (checkForWin()) {
-
+            if (currentPlayer === player1_text) {
+                player1WinCount++;
+                player1WinText.innerText = player1WinCount;
+            } else {
+                player2WinCount++;
+                player2WinText.innerText = player2WinCount;
+            }
+            
             // Adds animation to gameBoard div and keeps last keyframe until board is reset.
             gameBoard.style.animation = 'rotateOut 2s';
             gameBoard.style.animationFillMode = 'forwards';
@@ -46,6 +60,7 @@ function squareEventHandling(event) {
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
             playerTurnText.style.display = 'none';
+
         } else if (moveCounter === 8) {
             clearBtn.innerHTML = 'Play again?';
             playerTurnText.style.display = 'none';
