@@ -37,10 +37,10 @@ function squareEventHandling(event) {
     moveMemory[event.target.id] = currentPlayer;
     if (moveCounter >= 4) {
         if (checkForWin()) {
+
+            // Adds animation to gameBoard div and keeps last keyframe until board is reset.
             gameBoard.style.animation = 'hinge 2s ease-in-out';
-
-            //TODO: Figure out how to get the game grid box to stay hidden until createBoard() is called
-
+            gameBoard.style.animationFillMode = 'forwards';
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
