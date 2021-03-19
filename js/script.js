@@ -38,8 +38,7 @@ function squareEventHandling(event) {
     if (moveCounter >= 4) {
         if (checkForWin()) {
             gameBoard.style.animation = 'hinge 2s ease-in-out';
-            //gameBoard.style.animation = hinge 2s ease-in-out;
-            //animation: hinge 2s ease-in-out;
+            //TODO: Figure out how to get the game grid box to stay hidden until createBoard() is called
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
@@ -80,14 +79,11 @@ function changePlayer() {
     playerTurnText.innerHTML = `It's ${currentPlayer}'s turn`;
 }
 
+
 // Cycles through win conditions and returns true if one of the conditions has been met
 function checkForWin() {
     if (moveMemory[0] === moveMemory[1] && moveMemory[0] === moveMemory[2]) {
-        //squares[0].classList.add('animate__rotateOut');
-        // squares[0].className = 'animate__rotateOut';
-        // squares[0].style.setProperty('--animate-duration', '10s');
         console.log('won on top row');
-        console.log(squares[0]);
         return true;
     }
     else if (moveMemory[3] === moveMemory[4] && moveMemory[3] === moveMemory[5]) {
@@ -121,11 +117,6 @@ function checkForWin() {
         console.log('No winner yet');
     }
 }
-
-// Testing element animations
-// function winningAnimation(event) {
-//     event.target.classList.add('animate__rotateOut');
-// }
 
 // Starts game
 createBoard();

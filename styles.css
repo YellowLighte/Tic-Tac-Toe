@@ -4,7 +4,7 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: sans-serif;
-    background: crimson;
+    background: black;
 }
 
 .game-container {
@@ -23,8 +23,6 @@ body {
     grid-template-rows: 100px 100px 100px 100px;
     grid-template-columns: 100px 100px 100px;
     background-color: black;
-    /*Testing CSS Animation*/
-    /*animation: hinge 2s ease-in-out;*/
 }
 
 @keyframes hinge {
@@ -54,12 +52,12 @@ h1 {
     font-size: xxx-large;
     padding: 0;
     margin: 0;
-    /*//Test*/
-    background: greenyellow;
+    color: white;
 }
 
 h2 {
     font-size: large;
     padding: 0;
     margin: 5px;
+    color: white;
 }
