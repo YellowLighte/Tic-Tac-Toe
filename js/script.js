@@ -29,9 +29,9 @@ function createBoard() {
 function squareEventHandling(event) {
 
     if (currentPlayer === player1_text) {
-        event.target.style.color = 'blue';
+        event.target.style.color = 'crimson';
     } else {
-        event.target.style.color = 'green';
+        event.target.style.color = 'dimgrey';
     }
     event.target.innerText = currentPlayer;
     moveMemory[event.target.id] = currentPlayer;
@@ -39,8 +39,9 @@ function squareEventHandling(event) {
         if (checkForWin()) {
 
             // Adds animation to gameBoard div and keeps last keyframe until board is reset.
-            gameBoard.style.animation = 'hinge 2s ease-in-out';
+            gameBoard.style.animation = 'rotateOut 2s';
             gameBoard.style.animationFillMode = 'forwards';
+
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';

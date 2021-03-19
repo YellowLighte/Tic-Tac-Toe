@@ -1,12 +1,21 @@
 body {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
     min-height: 100vh;
     margin: 0;
     font-family: sans-serif;
-    background: black;
+    background: dimgray;
 }
 
+#player1 {
+    background: crimson;
+}
+
+#player2 {
+    background: crimson;
+}
 .game-container {
     height: 100vh;
     display: flex;
@@ -25,19 +34,36 @@ body {
     background-color: black;
 }
 
-@keyframes hinge {
-    20%, 60% {
-        transform: rotate(70deg);
-    }
-    60%, 80% {
-        transform: rotate(55deg);
+/*@keyframes hinge {*/
+/*    20%, 40% {*/
+/*        transform: rotate(70deg);*/
+/*        transform-origin: top left;*/
+/*    }*/
+/*    60%, 80% {*/
+/*        transform: rotate(55deg);*/
+/*        transform-origin: top left;*/
+/*        opacity: 1;*/
+/*    }*/
+/*    100% {*/
+/*        !*transform: translateY(500px);*!*/
+/*        transform-origin: top left;*/
+/*        opacity: 0;*/
+/*    }*/
+/*}*/
+
+@keyframes rotateOut {
+    0% {
+        transform-origin: center center;
+        transform: rotate(0);
         opacity: 1;
     }
     100% {
-        transform: translateY(600px);
+        transform-origin: center center;
+        transform: rotate(200deg);
         opacity: 0;
     }
 }
+
 
 .game-board-space {
     display: grid;
