@@ -38,7 +38,9 @@ function squareEventHandling(event) {
     if (moveCounter >= 4) {
         if (checkForWin()) {
             gameBoard.style.animation = 'hinge 2s ease-in-out';
+
             //TODO: Figure out how to get the game grid box to stay hidden until createBoard() is called
+
             removeSquareEventHandlers();
             window.confirm(`${currentPlayer} won the game`);
             clearBtn.innerHTML = 'Play again?';
@@ -49,6 +51,7 @@ function squareEventHandling(event) {
             alert('GAME OVER. Tie.');
         }
     }
+    console.log(moveCounter);
     changePlayer();
 }
 
@@ -62,6 +65,7 @@ function clearBoard() {
     currentPlayer = player1_text;
     moveCounter = 0;
     headText.innerText = 'Tic Tac Toe';
+    gameBoard.style.animation = '';
     createBoard();
 }
 
